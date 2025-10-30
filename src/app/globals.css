@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -90,4 +89,8 @@
 }
 .fade-dim:hover {
   opacity: 1;
+}
+.parallax-tile {
+  transition: transform 300ms ease, box-shadow 300ms ease, opacity 200ms ease;
+  will-change: transform;
 }
