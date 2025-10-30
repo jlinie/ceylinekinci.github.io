@@ -71,3 +71,23 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* Sadece masaüstü benzeri ortamlarda sistem imlecini gizle */
+@media (pointer: fine) {
+  html, body, a, button, input, textarea, select {
+    cursor: none !important;
+  }
+}
+
+/* Güvenlik: reduced-motion tercih edenlerde animasyonu daha sakin yap (opsiyonel) */
+@media (prefers-reduced-motion: reduce) {
+  .will-change-transform {
+    transition: none !important;
+  }
+}
+.fade-dim {
+  opacity: 0.6;
+  transition: opacity 200ms ease;
+}
+.fade-dim:hover {
+  opacity: 1;
+}
