@@ -13,11 +13,10 @@ export default function TopNavBar() {
 
   return (
     <nav
-      className="fixed left-1/2 top-6 z-9000 -translate-x-1/2"
-      onMouseLeave={() => setHover(null)}
-      aria-label="Primary"
-    >
-      {/* ultra transparan pastel blue + blur */}
+  className="fixed left-1/2 top-6 z-13000 -translate-x-1/2"
+  onMouseLeave={() => setHover(null)}
+  aria-label="Primary"
+>
       <div className="
         flex items-center gap-1 rounded-full
         border border-black/5

@@ -7,7 +7,7 @@ import CustomCursor from "@/components/CustomCursor";
 import SiteMenu from "@/components/SiteMenu";
 import TopNavBar from "@/components/TopNavBar";
 
-import Head from "next/head"; // ✅ bu satır önemli
+import Head from "next/head"; 
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -21,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Head>
-        {/* ✅ Google Fonts bağlantısı */}
         <link
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap"
           rel="stylesheet"

@@ -26,10 +26,9 @@ export default function CustomCursor() {
   const onMove = (e: MouseEvent) => {
     target.current.x = e.clientX;
     target.current.y = e.clientY;
-    // sadece ilk kere görünür yap
     setVisible((v) => {
       if (!v) return true;
-      return v; // aynı değeri yeniden set etme
+      return v; 
     });
   };
     const onEnter = () => setVisible(true);
@@ -51,7 +50,7 @@ export default function CustomCursor() {
     window.addEventListener("mouseup", onUp);
     window.addEventListener("mouseover", onOver);
 
-    const speed = 0.35; // istersen hız için burayı 0.22-0.25 yapabilirsin
+    const speed = 0.35; 
     const animate = () => {
       current.current.x += (target.current.x - current.current.x) * speed;
       current.current.y += (target.current.y - current.current.y) * speed;

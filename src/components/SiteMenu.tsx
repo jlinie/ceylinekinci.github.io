@@ -26,7 +26,6 @@ export default function SiteMenu() {
 
   return (
     <>
-      {/* Sağ üst buton */}
       <button
         aria-label="Open menu"
         onClick={() => setOpen(true)}
@@ -35,7 +34,6 @@ export default function SiteMenu() {
         data-cursor="link"
       >
         <span className="sr-only">Open</span>
-        {/* hamburger çizgileri */}
         <div className="mx-auto h-4 w-6">
           <div className="my-1 h-0.5 w-full bg-black dark:bg-white" />
           <div className="my-1 h-0.5 w-full bg-black dark:bg-white" />
@@ -43,10 +41,8 @@ export default function SiteMenu() {
         </div>
       </button>
 
-      {/* Overlay */}
       {open && (
         <div className="fixed inset-0 z-9998 bg-black text-white">
-        {/* Kapat */}
     <button
       onClick={() => setOpen(false)}
       aria-label="Close menu"
@@ -60,14 +56,12 @@ export default function SiteMenu() {
     </button>
 
     <div className="mx-auto flex h-full max-w-6xl flex-col items-center px-6 md:px-10">
-      {/* Üst satır — LİLA NOKTAYI SİLDİK */}
       <div className="flex w-full items-center justify-between pt-10">
         <div className="text-lg font-semibold tracking-tight">JLINIE</div>
       </div>
 
-      {/* Ortalanmış menü */}
       <nav className="flex flex-1 items-center justify-center w-full">
-  <ul className="w-full max-w-6xl">   {/* 4xl yerine 6xl ya da istediğin */}
+  <ul className="w-full max-w-6xl">  
     {items.map((it, i) => (
       <li
         key={it.label}
@@ -111,15 +105,30 @@ export default function SiteMenu() {
 </nav>
 
 
-      {/* Alt bilgi (geçici) */}
       <div className="grid w-full max-w-4xl gap-6 pb-10 text-sm text-zinc-300 md:grid-cols-3">
-        <div className="text-center md:text-left">City / Country</div>
+        <div className="text-center md:text-left"> Istanbul / TR</div>
         <div className="text-center">
-          email@example.com<br />+00 000 000 00 00
+          ceylinekinci@sabanciuniv.edu<br />+90 538 020 52 18
         </div>
         <div className="space-x-4 text-center md:text-right">
-          <a href="#" className="underline" data-cursor="link">Instagram</a>
-          <a href="#" className="underline" data-cursor="link">LinkedIn</a>
+          <a
+    href="https://www.linkedin.com/in/ceylin-ekinci/"
+    className="underline"
+    target="_blank"
+    rel="noreferrer"
+    data-cursor="link"
+  >
+    LinkedIn
+  </a>
+  <a
+    href="https://github.com/jlinie"
+    className="underline"
+    target="_blank"
+    rel="noreferrer"
+    data-cursor="link"
+  >
+    GitHub
+  </a>
         </div>
       </div>
     </div>

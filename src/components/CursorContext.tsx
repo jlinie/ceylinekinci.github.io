@@ -8,7 +8,7 @@ type CursorCtx = {
 const Ctx = createContext<CursorCtx | null>(null);
 
 export function CursorProvider({ children }: { children: React.ReactNode }) {
-  const [color, setColor] = useState<string>("#ffffff"); // varsayılan beyaz
+  const [color, setColor] = useState<string>("#ffffff"); 
   const value = useMemo(() => ({ color, setColor }), [color]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
