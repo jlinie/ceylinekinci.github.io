@@ -5,8 +5,7 @@ const items = [
   { label: "Info", href: "/info" },
   { label: "Projects", href: "/projects" },
   { label: "Research", href: "/research" },
-  { label: "Journal", href: "/journal" },
-  { label: "Contacts", href: "/contacts" },
+  { label: "Journal", href: "/journal" }
 ];
 export default function TopNavBar() {
   const [hover, setHover] = useState<number | null>(null);

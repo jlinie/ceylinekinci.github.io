@@ -7,10 +7,10 @@ type Item = { src: string; href: string; x: number; y: number; w: number; h: num
 
 const INITIAL_ITEMS: Item[] = [
   {
-    "src": "/pic1.jpeg",
+    "src": "/pic1.png",
     "href": "/projects/p1",
-    "x": 23.487305817780673,
-    "y": 20.96511765653864,
+    "x": 27.963550708912038,
+    "y": 18.680914517106682,
     "w": 300,
     "h": 300
   },
@@ -23,7 +23,7 @@ const INITIAL_ITEMS: Item[] = [
     "h": 500
   },
   {
-    "src": "/pic3.jpeg",
+    "src": "/pic3.jpg",
     "href": "/journal/j1",
     "x": 69.52749181676793,
     "y": 16.71328990917488,
@@ -31,7 +31,7 @@ const INITIAL_ITEMS: Item[] = [
     "h": 320
   },
   {
-    "src": "/pic4.png",
+    "src": "/pic5.png",
     "href": "/research/r1",
     "x": 43.66780687319037,
     "y": 12.776454681246152,
@@ -39,39 +39,39 @@ const INITIAL_ITEMS: Item[] = [
     "h": 300
   },
   {
-    "src": "/pic5.png",
+    "src": "/pic6.png",
     "href": "/projects/p3",
-    "x": 81.94792115843141,
-    "y": 47.90909865806843,
+    "x": 83.64355892881379,
+    "y": 35.37417256773399,
     "w": 340,
     "h": 320
   },
   {
-    "src": "/pic6.png",
+    "src": "/pic7.png",
     "href": "/projects/p4",
-    "x": 69.96976208350299,
-    "y": 70.07425242456897,
+    "x": 68.8117246274595,
+    "y": 52.62737556044104,
     "w": 300,
-    "h": 300
+    "h": 200
   },
   {
     "src": "/pic8.png",
     "href": "/contacts",
-    "x": 46.72495524088542,
-    "y": 84.2610927638162,
+    "x": 46.113366021050346,
+    "y": 88.66665093182343,
     "w": 320,
-    "h": 280
+    "h": 380
   },
   {
     "src": "/pic9.png",
-    "href": "/projects/p4",
-    "x": 21.756939358181423,
-    "y": 88.25957199622844,
+    "href": "/projects/p14",
+    "x": 26.33809972692419,
+    "y": 91.44747879704819,
     "w": 300,
-    "h": 300
+    "h": 500
   },
   {
-    "src": "/pic11.jpeg",
+    "src": "/pic10.jpeg",
     "href": "/projects/p1",
     "x": 35.72991861625724,
     "y": 61.91858752020474,
@@ -79,14 +79,21 @@ const INITIAL_ITEMS: Item[] = [
     "h": 300
   },
   {
-    "src": "/pic12.jpeg",
+    "src": "/pic11.png",
     "href": "/projects/p1",
-    "x": 16.810582478841145,
-    "y": 48.43910104535483,
+    "x": 20.298292371961807,
+    "y": 54.64958604333437,
+    "w": 300,
+    "h": 300
+  },
+  {
+    "src": "/pic12.png",
+    "href": "/projects/p1",
+    "x": 60.00319869429976,
+    "y": 78.78129705419681,
     "w": 300,
     "h": 300
   }
-
 ];
 export default function ParallaxWall({
   scaleX = 3, 

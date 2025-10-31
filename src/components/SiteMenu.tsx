@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import { useCursor } from "@/components/CursorContext"; 
 
 const items = [
-  { label: "Info", href: "/info" },
-  { label: "Projects", href: "/projects" },
-  { label: "Research", href: "/research" },
-  { label: "Journal", href: "/journal" },
-  { label: "Contacts", href: "/contacts" },
+  { label: "Info", href: "/info", img:  "/icon1.jpeg" },
+  { label: "Projects", href: "/projects",img:  "/icon4.jpeg"},
+  { label: "Research", href: "/research" ,img:  "/icon3.jpeg"},
+  { label: "Journal", href: "/journal",img:  "/ikon2.jpeg"}
 ];
 
 export default function SiteMenu() {
@@ -80,14 +79,19 @@ export default function SiteMenu() {
           "
         >
           <div className="flex items-center gap-5">
-            <div
-              className="
-                h-10 w-10 rounded-full
-                bg-white/5 ring-1 ring-white/10
-                transition-colors duration-200
-                group-hover:bg-white/20
-              "
-            />
+            <div className="h-10 w-10 rounded-full overflow-hidden ring-1 ring-white/10">
+              <img
+                src={it.img}
+                alt={it.label}
+                className="
+                  h-full w-full object-cover
+                  transition-transform duration-700 ease-in-out
+                  group-hover:scale-110 group-hover:rotate-360
+                "
+              />
+            </div>
+
+
             <span
               className="
                 font-semibold tracking-tight
@@ -101,7 +105,7 @@ export default function SiteMenu() {
         </a>
       </li>
     ))}
-  </ul>
+  </ul>-
 </nav>
 
 
