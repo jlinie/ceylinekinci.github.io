@@ -86,7 +86,7 @@ const finalDotOpacity = isLoadingScreen ? 0 : dotOpacity;
       <div
         ref={cursorRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-9999 -translate-x-1/2 -translate-y-1/2 rounded-full border mix-blend-difference transition-[opacity,transform] duration-150 will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-99990 -translate-x-1/2 -translate-y-1/2 rounded-full border mix-blend-difference transition-[opacity,transform] duration-150 will-change-transform"
         style={{
           width: 36,
           height: 36,

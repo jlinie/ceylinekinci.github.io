@@ -1,65 +1,65 @@
-import "server-only";
-import fs from "fs/promises";
+import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+
+export type Category = "projects" | "research" | "journal";
+
+const CONTENT_ROOT = path.join(process.cwd(), "content");
 
 export type MetaPost = {
   slug: string;
   title: string;
-  category: "projects" | "research" | "journal";
-  cover?: string;      
+  cover?: string;
   headerBg?: string;
+  category: Category;
   date?: string;
   _filepath?: string;
 };
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
-
-export async function getMetaByCategory(category: MetaPost["category"]): Promise<MetaPost[]> {
-  const dir = path.join(CONTENT_DIR, category);
-  let files: string[] = [];
-  try {
-    files = (await fs.readdir(dir))
-      .filter((f) => f.endsWith(".mdx"))
-      .map((f) => path.join(dir, f));
-  } catch {
-    return [];
-  }
-
-  const metas: MetaPost[] = [];
-  for (const fp of files) {
-    const raw = await fs.readFile(fp, "utf8");
-    const { data } = matter(raw);
-    metas.push({
-      slug: String(data.slug),
-      title: String(data.title),
-      category: data.category as MetaPost["category"],
-      cover: data.cover ? String(data.cover) : undefined,
-      headerBg: data.headerBg ? String(data.headerBg) : undefined,
-      date: data.date ? String(data.date) : undefined,
-      _filepath: fp,
-    });
-  }
-
-  metas.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
-  return metas;
+function readFile(fp: string) {
+  const raw = fs.readFileSync(fp, "utf8");
+  const { data, content } = matter(raw);
+  return { data, content };
 }
 
-export async function getPostSource(slug: string) {
-  const cats: MetaPost["category"][] = ["projects", "research", "journal"];
-  for (const c of cats) {
-    const metas = await getMetaByCategory(c);
-    const match = metas.find((m) => m.slug === slug);
-    if (match?._filepath) {
-      const raw = await fs.readFile(match._filepath, "utf8");
-      const { content, data } = matter(raw);
-      return {
-        meta: match,
-        mdx: content,
-        headerBg: (data.headerBg as string | undefined) ?? match.headerBg,
-        title: (data.title as string) ?? match.title,
-      };
-    }
-  }
-  return null;
+export async function getMetaByCategory(category: Category): Promise<MetaPost[]> {
+  const dir = path.join(CONTENT_ROOT, category);
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter(f => f.endsWith(".mdx"));
+  return files.map(f => {
+    const fp = path.join(dir, f);
+    const { data } = readFile(fp);
+    const slug = path.basename(f, ".mdx");
+    return {
+      slug,
+      title: data.title ?? slug,
+      cover: data.cover,
+      headerBg: data.headerBg,
+      category,
+      date: data.date,
+      _filepath: fp,
+    } satisfies MetaPost;
+  });
+}
+
+export async function getPostByCategoryAndSlug(category: Category, slug: string) {
+  const fp = path.join(CONTENT_ROOT, category, `${slug}.mdx`);
+  const { data, content } = readFile(fp);
+  return {
+    meta: {
+      slug,
+      title: data.title ?? slug,
+      cover: data.cover,
+      headerBg: data.headerBg,
+      category,
+      date: data.date,
+      _filepath: fp,
+    } as MetaPost,
+    mdx: content,
+  };
+}
+
+export async function getSlugsByCategory(category: Category): Promise<string[]> {
+  const metas = await getMetaByCategory(category);
+  return metas.map(m => m.slug);
 }
