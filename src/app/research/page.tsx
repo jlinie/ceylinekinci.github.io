@@ -1,10 +1,14 @@
 import CardsSection from "@/components/CardsSection";
-import { getMetaByCategory } from "@/lib/blog";
+import { getEntries } from "@/lib/content";
 
 export default async function ResearchPage() {
-  const metas = await getMetaByCategory("research");
-  const items = metas.map(m => ({ ...m, href: `/research/${m.slug}` }));
-
+  const posts = await getEntries("research");
+  const items = posts.map(p => ({
+    slug: `/research/${p.slug}`,
+    title: p.meta.title,
+    cover: p.meta.cover,
+    summary: p.meta.summary,
+  }));
   return (
     <CardsSection
       title="Research"

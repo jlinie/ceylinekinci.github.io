@@ -1,10 +1,14 @@
 import CardsSection from "@/components/CardsSection";
-import { getMetaByCategory } from "@/lib/blog";
+import { getEntries } from "@/lib/content";
 
 export default async function JournalPage() {
-  const metas = await getMetaByCategory("journal");
-  const items = metas.map(m => ({ ...m, href: `/journal/${m.slug}` }));
-
+  const posts = await getEntries("journal");
+  const items = posts.map(p => ({
+    slug: `/journal/${p.slug}`,
+    title: p.meta.title,
+    cover: p.meta.cover,
+    summary: p.meta.summary,
+  }));
   return (
     <CardsSection
       title="Journal"

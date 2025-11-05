@@ -268,12 +268,6 @@ const showEdit = process.env.NODE_ENV !== "production";
       ))}
     </div>
 
-    <button
-      onClick={() => setEdit(v => !v)}
-      className="fixed right-4 bottom-4 z-12000 rounded-full bg-black text-white px-3 py-2 text-xs opacity-70 hover:opacity-100"
-    >
-      {edit ? "Exit Edit (E)" : "Edit Layout (E)"}
-    </button>
   </div>
 );
 

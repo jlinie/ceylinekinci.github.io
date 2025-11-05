@@ -1,28 +1,12 @@
-import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { getEntry } from "@/lib/content";
 import Article from "@/components/Article";
-
-export const metadata = {
-  title: "Info — Ceylin",
-  description: "About / Info",
-};
 
 export default function InfoPage() {
   return (
-    <Article title="Info" headerBg="#FFF1B5">
-      <p>
-        Merhaba! 
-      </p>
-
-      <Image
-        src="/pic11.jpeg"
-        alt="Example"
-        width={1200}
-        height={800}
-      />
-
-      <p>
-        paragraflar
-      </p>
-    </Article>
+    <main className="p-16">
+      <h1 className="text-4xl font-bold">Info</h1>
+      <p>Merhaba!</p>
+    </main>
   );
 }

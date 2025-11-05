@@ -1,7 +1,14 @@
 "use client";
 
 import PostCard from "@/components/PostCard";
-import type { MetaPost } from "@/lib/blog";
+
+export type CardItem = {
+  slug: string;          
+  title: string;
+  cover?: string;
+  headerBg?: string;
+  summary?: string;
+};
 
 export default function CardsSection({
   title,
@@ -13,7 +20,7 @@ export default function CardsSection({
 }: {
   title: string;
   intro?: string;
-  items: (MetaPost & { slug: string })[];
+  items: CardItem[];
   bg?: string;
   toneClass?: string;
   compact?: boolean;
@@ -27,6 +34,7 @@ export default function CardsSection({
       <div className={`mx-auto w-full max-w-6xl px-6 ${padY}`}>
         <h1 className="mb-3 text-3xl font-semibold tracking-tight">{title}</h1>
         {intro && <p className="max-w-2xl text-base/relaxed opacity-80">{intro}</p>}
+
         <div className={`grid ${mtGrid} grid-cols-1 ${gap} sm:grid-cols-2 lg:grid-cols-3`}>
           {items.map((it) => (
             <PostCard key={it.slug} item={it} />

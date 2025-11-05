@@ -1,10 +1,14 @@
 import CardsSection from "@/components/CardsSection";
-import { getMetaByCategory } from "@/lib/blog";
+import { getEntries } from "@/lib/content";
 
 export default async function ProjectsPage() {
-  const metas = await getMetaByCategory("projects");
-  const items = metas.map(m => ({ ...m, href: `/projects/${m.slug}` }));
-
+  const posts = await getEntries("projects");
+  const items = posts.map(p => ({
+    slug: `/projects/${p.slug}`,
+    title: p.meta.title,
+    cover: p.meta.cover,
+    summary: p.meta.summary,
+  }));
   return (
     <CardsSection
       title="Projects"

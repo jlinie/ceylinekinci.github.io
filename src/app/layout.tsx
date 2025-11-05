@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-
+import BackButton from "@/components/BackButton";
+import { UiProvider } from "@/components/UiContext"; 
 import { CursorProvider } from "@/components/CursorContext";
 import CustomCursor from "@/components/CustomCursor";
 import SiteMenu from "@/components/SiteMenu";
@@ -30,12 +31,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black overflow-hidden`}
       >
-        <CursorProvider>
-          <CustomCursor />
-          <TopNavBar />
-          <SiteMenu />
-          {children}
-        </CursorProvider>
+       <UiProvider>
+          <CursorProvider>
+            <CustomCursor />
+            <TopNavBar />      
+            <SiteMenu />       
+            {children}
+            <BackButton />    
+          </CursorProvider>
+        </UiProvider>
       </body>
     </html>
   );
