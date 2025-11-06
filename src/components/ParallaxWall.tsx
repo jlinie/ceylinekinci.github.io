@@ -88,7 +88,7 @@ const INITIAL_ITEMS: Item[] = [
   },
   {
     "src": "/pic12.png",
-    "href": "/projects/p1",
+    "href": "/journal/j2",
     "x": 60.00319869429976,
     "y": 78.78129705419681,
     "w": 300,

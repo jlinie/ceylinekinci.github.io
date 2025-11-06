@@ -1,12 +1,38 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { getEntry } from "@/lib/content";
 import Article from "@/components/Article";
+import { getEntry } from "@/lib/content";
+import Mdx from "@/components/Mdx";
+import type { Metadata } from "next";
 
-export default function InfoPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const post = await getEntry("info", "info");
+  return {
+    title: `${post.meta.title} — Ceylin`,
+    description: post.meta.summary ?? "About / Info",
+    openGraph: {
+      title: post.meta.title,
+      description: post.meta.summary,
+      images: post.meta.cover ? [{ url: post.meta.cover }] : undefined,
+    },
+  };
+}
+
+export const dynamic = "error";
+
+export default async function InfoPage() {
+  const post = await getEntry("info", "info");
   return (
-    <main className="p-16">
-      <h1 className="text-4xl font-bold">Info</h1>
-      <p>Merhaba!</p>
-    </main>
+    <Article
+      title={post.meta.title}
+      headerBg={post.meta.cover ?? "#000"}
+      toneClass={post.meta.cover ? "text-black" : "text-white"}
+      titleClass={post.meta.titleClass}           
+      bodyFont={post.meta.bodyFont}
+      contentMaxWidth={post.meta.contentMaxWidth}
+    >
+      <Mdx
+        source={post.content}
+        imageClass={post.meta.imageClass}
+      />
+    </Article>
   );
 }

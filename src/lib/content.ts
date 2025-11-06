@@ -8,6 +8,10 @@ export type MdxMeta = {
   summary?: string;
   cover?: string;   
   tags?: string[];
+  titleClass?: string;        
+  bodyFont?: string;          
+  imageClass?: string;        
+  contentMaxWidth?: string;   
 };
 
 const ROOT = process.cwd();

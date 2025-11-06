@@ -1,38 +1,36 @@
-"use client";
-import type { ReactNode } from "react";
-import clsx from "clsx";
-
 export default function Article({
   title,
-  headerBg = "#F8F8F8",
+  headerBg,
+  toneClass = "text-black",
+  titleClass = "text-3xl md:text-4xl", // Küçültülmüş default
+  bodyFont = '"Times New Roman", Times, serif', // Global Times
+  contentMaxWidth = "max-w-3xl",
   children,
-  className,
 }: {
   title: string;
   headerBg?: string;
-  children: ReactNode;
-  className?: string;
+  toneClass?: string;
+  titleClass?: string;
+  bodyFont?: string;
+  contentMaxWidth?: string; // Tailwind class
+  children: React.ReactNode;
 }) {
   return (
-    <article className={clsx("min-h-screen bg-white text-black", className)}>
-      <header className="relative">
+    <section className={toneClass}>
+      {/* Header (isteğe bağlı görsel/renk) */}
+      {headerBg && (
         <div
-          className="absolute inset-x-0 top-0 -z-10 h-[220px] md:h-[260px]"
-          style={{ backgroundColor: headerBg }}
-          aria-hidden
+          className="h-40 w-full"
+          style={{
+            background: headerBg.startsWith("#") ? headerBg : `url(${headerBg}) center/cover`,
+          }}
         />
-        <div className="mx-auto max-w-4xl px-6 pt-28 md:pt-36">
-          <h1 className="text-4xl/tight md:text-6xl/tight font-extrabold tracking-tight">
-            {title}
-          </h1>
-        </div>
-      </header>
+      )}
 
-      <div className="mx-auto max-w-3xl px-6 py-10 md:py-14">
-        <div className="prose prose-zinc max-w-none prose-img:rounded-xl prose-img:shadow-md">
-          {children}
-        </div>
+      <div className={`mx-auto w-full ${contentMaxWidth} px-6 py-10`} style={{ fontFamily: bodyFont }}>
+        <h1 className={`mb-6 font-extrabold tracking-tight ${titleClass}`}>{title}</h1>
+        {children}
       </div>
-    </article>
+    </section>
   );
 }

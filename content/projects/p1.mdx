@@ -1,15 +1,29 @@
 ---
-title: "Booklet"
-date: "2025-10-12"
-summary: "Dikişli küçük kitap; PCB motifi."
-cover: "/images/projects/booklet/cover.jpg"
-tags: ["print","craft"]
+title: "Personal Website"
+date: "2025-11-05"
+summary: "A fast, MDX-powered portfolio built with Next.js and deployed to GitHub Pages."
+cover: "/pic13.png"
+tags: ["Next.js", "MDX", "Design", "Deployment"]
+titleClass: "text-4xl md:text-5xl"
+bodyFont: '"Times New Roman", Times, serif'
+imageClass: "my-6 mx-auto w-full max-w-md rounded-xl border border-black/20 shadow"
+contentMaxWidth: "max-w-4xl"
 ---
 
-Giriş paragrafı. Bu projede…
+> A minimalist portfolio with playful interactions and a simple authoring flow.
 
-## Süreç
-1. Fikir eskizleri
-2. Dikiş denemeleri
+## Overview
+This site is my public notebook: projects, research notes, and a journal.  
+Goals: **fast**, **low-maintenance**, **nice to use**, and **easy to publish**.
 
-![Detay](/images/projects/booklet/detail1.jpg)
+- **Framework:** Next.js (App Router) → **static export**
+- **Authoring:** Markdown/MDX files under `/content`
+- **Hosting:** GitHub Pages (via GitHub Actions)
+- **Styling:** Tailwind CSS
+- **Extras:** custom cursor, parallax wall on the home, menu/topbar state, color-palette cards
+
+
+
+## Why MDX?
+I wanted writing to be as simple as “add a file and commit”. MDX lets me mix markdown with React when needed:
+
