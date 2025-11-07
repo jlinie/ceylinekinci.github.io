@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getSlugs, getEntry } from "@/lib/content";
 import Article from "@/components/Article";
 import Mdx from "@/components/Mdx";
+import { colorForSlug } from "@/lib/palette";
 
 export async function generateStaticParams() {
   const slugs = await getSlugs("research");
@@ -10,16 +11,16 @@ export async function generateStaticParams() {
 
 export default async function ResearchPost({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params; // Next 16: params is a Promise
+}: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   try {
     const post = await getEntry("research", slug);
+    const headerColor = colorForSlug(slug);
+
     return (
       <Article
         title={post.meta.title}
-        headerBg={post.meta.cover}
+        headerBg={headerColor}
         titleClass={post.meta.titleClass}
         bodyFont={post.meta.bodyFont}
         contentMaxWidth={post.meta.contentMaxWidth}

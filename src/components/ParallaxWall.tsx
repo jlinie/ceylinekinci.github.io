@@ -8,7 +8,7 @@ type Item = { src: string; href: string; x: number; y: number; w: number; h: num
 const INITIAL_ITEMS: Item[] = [
   {
     "src": "/pic1.png",
-    "href": "/projects/p1",
+    "href": "/journal/j3",
     "x": 27.963550708912038,
     "y": 18.680914517106682,
     "w": 300,
